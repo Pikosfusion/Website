@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+}
+
+body {
+  @apply antialiased text-gray-900;
+}
+
+/* Custom Swiper Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f59e0b !important; /* Tailwind yellow-500 */
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1;
+}
+
+/* Größere Pfeile für den Hero-Slider */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 44px !important;
+}
+
+/* Kleinere Pfeile für den Testimonials-Slider */
+.testimonials-slider .swiper-button-next::after,
+.testimonials-slider .swiper-button-prev::after {
+  font-size: 24px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #f59e0b !important; /* Tailwind yellow-500 */
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+}
+
+/* Testimonials Slider Specific Styles */
+.testimonials-slider {
+  padding-bottom: 3rem;
+}
+
+.testimonials-slider .swiper-button-next {
+  right: 8px;
+}
+
+.testimonials-slider .swiper-button-prev {
+  left: 8px;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 32px !important;
+  }
+  
+  .swiper-pagination {
+    bottom: 16px !important;
+  }
+
+  /* Hide testimonials slider navigation on mobile */
+  .testimonials-slider .swiper-button-next,
+  .testimonials-slider .swiper-button-prev {
+    display: none !important;
+  }
+}
