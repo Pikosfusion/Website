@@ -1,21 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
+import { ServiceCardProps } from '../types/service';
 
-interface ServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
+const ServiceCard: React.FC<ServiceCardProps> = ({ id, icon, title, subtitle, description, features }) => {
+  const navigate = useNavigate();
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
+  // Function to handle smooth scrolling after navigation
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(`/services#${id}`);
+  };
+
   return (
     <div className="relative h-[600px] perspective-1000">
       <div className="h-full transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180">
         {/* Front of the card */}
         <div className="absolute inset-0 bg-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center backface-hidden">
           <div className="text-yellow-500 mb-6">{icon}</div>
-          <h3 className="text-2xl font-serif mb-4">{title}</h3>
+          <h3 className="text-2xl font-serif mb-2">{title}</h3>
+          {subtitle && (
+            <p className="text-sm text-gray-600 mb-4">{subtitle}</p>
+          )}
           <div className="w-16 h-1 bg-yellow-500 mb-6"></div>
           <div className="relative group cursor-pointer">
             <div className="flex items-center gap-2 text-gray-400">
@@ -29,18 +35,28 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
         
         {/* Back of the card */}
         <div className="absolute inset-0 bg-yellow-500 p-8 rounded-lg shadow-lg flex flex-col items-center backface-hidden rotate-y-180">
-          <div className="flex-grow overflow-hidden">
-            <p className="text-white text-center leading-relaxed">
+          <div className="flex-grow">
+            <p className="text-white text-center leading-relaxed mb-6">
               {description}
             </p>
+            {features && (
+              <div className="space-y-4">
+                {features.map((feature, index) => (
+                  <div key={index} className="text-white">
+                    <h4 className="font-serif text-lg mb-1">{feature.title}</h4>
+                    <p className="text-sm text-white/90">{feature.description}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="mt-6 -mb-12 w-full flex justify-center">
-            <Link 
-              to={`/services#${title.toLowerCase().replace(' ', '-')}`}
+            <button 
+              onClick={handleClick}
               className="bg-white text-yellow-500 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors duration-300"
             >
               Mehr erfahren
-            </Link>
+            </button>
           </div>
         </div>
       </div>
@@ -48,4 +64,4 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
   );
 };
 
-export default ServiceCard
+export default ServiceCard;

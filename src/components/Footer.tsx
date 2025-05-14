@@ -60,7 +60,6 @@ const Footer = () => {
             <div className="space-y-2">
               <Link to="/impressum" className="block text-sm hover:text-yellow-500 transition-colors">Impressum</Link>
               <Link to="/datenschutz" className="block text-sm hover:text-yellow-500 transition-colors">Datenschutzerklärung</Link>
-              <Link to="/agb" className="block text-sm hover:text-yellow-500 transition-colors">AGB</Link>
               <Link to="/widerruf" className="block text-sm hover:text-yellow-500 transition-colors">Widerrufsbelehrung</Link>
             </div>
           </div>

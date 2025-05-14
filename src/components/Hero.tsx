@@ -1,33 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { slides } from '../data/slides';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-const slides = [
-  {
-    image: 'https://red-it.org/apps/sandra/images/Kinderzimmer.webp',
-    title: 'Kinderzimmer',
-    subtitle: 'Zeit Träume zu leben - So individuell wie du bist, so einzigartig ist dein Raum.',
-  },
-  {
-    image: 'https://www.red-it.org/apps/sandra/images/Warteraum.webp',
-    title: 'Wartezimmer',
-    subtitle: 'Wo Wartezeit zur Qualitätszeit wird - Entspannen Sie in einer einladenden Atmosphäre.',
-  },
-  {
-    image: 'https://red-it.org/apps/sandra/images/Therapieraum.webp',
-    title: 'Therapieräume',
-    subtitle: 'Entdecken, Wachsen, Entwickeln - Hier wird Lernen zur Freude.',
-  },
-  {
-    image: 'https://red-it.org/apps/sandra/images/Kita-Einrichtung.webp',
-    title: 'Kita-Einrichtung',
-    subtitle: 'Ein Raum voller Möglichkeiten – kindgerecht, funktional und mit Liebe zum Detail gestaltet.',
-  },
-];
 
 const Hero = () => {
   const swiperRef = useRef<any>(null);
@@ -97,16 +75,9 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-black/40" />
               </div>
 
-              <div className="relative h-full flex flex-col items-center pt-32 text-white text-center px-4">
-                {/* Logo with gradient stripe */}
+              <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex flex-col items-center text-white text-center px-4">
+                {/* Logo without gradient stripe */}
                 <div className="relative w-full mb-12">
-                  {/* Horizontal gradient stripes */}
-                  <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-32">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                    <div className="absolute inset-0 backdrop-blur-[2px]" />
-                  </div>
-
-                  {/* Logo container */}
                   <div className="relative">
                     <img
                       src="https://www.red-it.org/apps/sandra/images/logo.png"
@@ -116,22 +87,22 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Content with glassmorphism effect */}
-                <div className="relative max-w-4xl mx-auto p-8 rounded-xl overflow-hidden">
-                  {/* Glassmorphism background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 backdrop-blur-[8px]" />
+                {/* Content with horizontal gradient */}
+                <div className="relative max-w-6xl mx-auto p-8">
+                  {/* Horizontal gradient background */}
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                    <div className="absolute inset-0 backdrop-blur-[2px]" />
+                  </div>
 
                   {/* Content */}
                   <div className="relative">
-                    <h1 className="text-4xl md:text-6xl font-serif mb-4 tracking-wide text-white drop-shadow-lg">
+                    <h1 className="text-4xl md:text-6xl font-serif mb-6 tracking-wide text-white drop-shadow-lg">
                       {slide.title}
                     </h1>
-                    <p className="max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed text-white/90 drop-shadow mb-8">
+                    <p className="text-base md:text-lg font-light text-white/90 drop-shadow">
                       {slide.subtitle}
                     </p>
-                    <button className="bg-yellow-500 text-white px-8 py-3 rounded-full hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                      MEHR ERFAHREN
-                    </button>
                   </div>
                 </div>
               </div>

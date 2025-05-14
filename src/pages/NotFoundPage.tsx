@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ArrowLeft } from 'lucide-react';
+import Section from '../components/layout/Section';
+import PageContainer from '../components/layout/PageContainer';
 
 const NotFoundPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-32 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
+    <Section className="min-h-screen bg-gray-50 pt-32">
+      <PageContainer>
+        <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center">
           <h1 className="text-9xl font-serif text-yellow-500 mb-4">404</h1>
           <h2 className="text-3xl font-serif mb-6">Seite nicht gefunden</h2>
           <p className="text-gray-600 mb-8">
@@ -29,9 +31,9 @@ const NotFoundPage = () => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </PageContainer>
+    </Section>
   );
 };
 
-export default NotFoundPage;
+export default memo(NotFoundPage);

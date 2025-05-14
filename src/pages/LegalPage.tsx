@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useLocation } from 'react-router-dom';
+import Section from '../components/layout/Section';
+import PageContainer from '../components/layout/PageContainer';
 
 interface LegalContent {
   [key: string]: {
@@ -59,24 +61,6 @@ const legalContent: LegalContent = {
       </>
     ),
   },
-  '/agb': {
-    title: 'Allgemeine Geschäftsbedingungen',
-    content: (
-      <>
-        <h2 className="text-2xl font-serif mb-6">Allgemeine Geschäftsbedingungen</h2>
-        <div className="space-y-4">
-          <h3 className="text-xl font-serif">§1 Geltungsbereich</h3>
-          <p>Die nachstehenden allgemeinen Geschäftsbedingungen gelten für alle Rechtsgeschäfte mit Sandra Pittelkow Interior Design.</p>
-
-          <h3 className="text-xl font-serif mt-8">§2 Vertragsgegenstand</h3>
-          <p>Gegenstand des Vertrages ist die Beratung und Gestaltung von Innenräumen sowie damit verbundene Dienstleistungen.</p>
-
-          <h3 className="text-xl font-serif mt-8">§3 Preise und Zahlungsbedingungen</h3>
-          <p>Alle Preise verstehen sich in Euro und zzgl. der gesetzlichen Mehrwertsteuer.</p>
-        </div>
-      </>
-    ),
-  },
   '/widerruf': {
     title: 'Widerrufsbelehrung',
     content: (
@@ -113,15 +97,15 @@ const LegalPage = () => {
   const pageContent = legalContent[location.pathname];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-32 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section className="min-h-screen bg-gray-50 pt-32">
+      <PageContainer>
         <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
           <h1 className="text-3xl font-serif mb-8">{pageContent.title}</h1>
           {pageContent.content}
         </div>
-      </div>
-    </div>
+      </PageContainer>
+    </Section>
   );
 };
 
-export default LegalPage;
+export default memo(LegalPage);

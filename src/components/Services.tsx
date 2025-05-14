@@ -1,27 +1,10 @@
 import React from 'react';
-import { Palette, Brush, ShoppingBag, Star, Anchor, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Star, Anchor, Heart } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import TestimonialSlider from './TestimonialSlider';
 import ContactForm from './ContactForm';
-
-const services = [
-  {
-    icon: <Palette className="w-12 h-12" />,
-    title: 'Interior Design',
-    description: 'Erleben Sie die Kunst der Raumgestaltung in ihrer schönsten Form. Unser Interior Design-Service verwandelt Ihre Räume in harmonische Lebenslandschaften, die Funktionalität und Ästhetik perfekt vereinen. Von der strategischen Raumaufteilung bis zur Auswahl der perfekten Materialien und Farben - wir schaffen Atmosphären, die inspirieren und begeistern. Jedes Detail wird sorgfältig ausgewählt, um Ihren persönlichen Stil zu unterstreichen und gleichzeitig maximalen Komfort zu gewährleisten. Lassen Sie uns gemeinsam Ihren Traum von einem perfekt gestalteten Zuhause verwirklichen.'
-  },
-  {
-    icon: <Brush className="w-12 h-12" />,
-    title: 'Wand-Kunst',
-    description: 'Entdecken Sie die transformative Kraft der Wandgestaltung. Unsere Wand-Kunst-Expertise reicht von handgemalten Murals bis zu innovativen Tapetenlösungen, die Ihren Räumen eine einzigartige Persönlichkeit verleihen. Wir arbeiten mit verschiedensten Techniken und Materialien, um atemberaubende visuelle Effekte zu erzielen - von subtilen Texturen bis hin zu dramatischen Statements. Jedes Wandkunstwerk wird speziell für Ihren Raum konzipiert und spiegelt Ihre individuelle Geschichte wider. Verwandeln Sie Ihre Wände in lebendige Kunstwerke, die Ihre Räume zum Leben erwecken.'
-  },
-  {
-    icon: <ShoppingBag className="w-12 h-12" />,
-    title: 'Lieblingsprodukte',
-    description: 'Entdecken Sie unsere liebevoll kuratierte Kollektion regionaler, handgefertigter Schätze für Ihr Kind. Jedes Stück wird von lokalen Kunsthandwerkern mit Hingabe speziell für Kinderzimmer geschaffen. Von verspielten Wanddekorationen bis zu einzigartigen Aufbewahrungslösungen - unsere Kollektion vereint Kreativität mit Funktionalität. Mit nachhaltigen Materialien und kindgerechter Gestaltung schaffen wir eine magische Atmosphäre im Reich Ihres Kindes.'
-  }
-];
+import { services } from '../data/services';
+import { testimonials } from '../data/testimonials';
 
 const features = [
   {
@@ -46,30 +29,6 @@ const features = [
   }
 ];
 
-const testimonials = [
-  {
-    name: "Anidi Anida",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200",
-    rating: 5,
-    date: "vor 11 Monaten",
-    text: "Ich wollte meinem Kind mit einem neuen Kinderzimmer eine Freude bereiten und bin auf meiner Suche nach einer passenden Interieur Designerin auf Pikos Fusion (Sandra) gestoßen. Die Zusammenarbeit war stets professionell und hat mir viel Freude bereitet. Auf all meine Wünsche ist sie eingegangen und das Ergebnis am Ende war überwältigend! Ich kann daher nur eine 100% Empfehlung aussprechen!"
-  },
-  {
-    name: "Marie Schmidt",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200",
-    rating: 5,
-    date: "vor 8 Monaten",
-    text: "Sandra hat aus dem Zimmer meiner Zwillinge einen wahren Traumort geschaffen. Ihre Fähigkeit, die Persönlichkeiten meiner Kinder in das Design einzubringen, war beeindruckend. Der Raum ist nicht nur wunderschön, sondern auch praktisch und mitwachsend gestaltet."
-  },
-  {
-    name: "Thomas Weber",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200",
-    rating: 5,
-    date: "vor 6 Monaten",
-    text: "Als alleinerziehender Vater war es mir wichtig, für meine Tochter einen Raum zu schaffen, der sowohl kreativ als auch beruhigend wirkt. Sandra hat genau verstanden, was ich mir vorgestellt habe. Das Ergebnis übertrifft alle Erwartungen. Meine Tochter liebt ihr neues Reich!"
-  }
-];
-
 const Services = () => {
   return (
     <section className="py-20 bg-gray-50">
@@ -82,14 +41,20 @@ const Services = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-            />
-          ))}
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <ServiceCard
+                key={index}
+                id={service.id}
+                icon={<Icon className="w-12 h-12" />}
+                title={service.title}
+                subtitle={service.subtitle}
+                description={service.description}
+                features={service.features}
+              />
+            );
+          })}
         </div>
 
         {/* Features Section */}

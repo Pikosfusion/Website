@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Palette, Brush, ShoppingBag } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import Section from '../components/layout/Section';
+import PageContainer from '../components/layout/PageContainer';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -39,7 +42,7 @@ const servicesData = [
     description: 'Verwandeln Sie Ihre Wände in einzigartige Kunstwerke.',
     features: [
       {
-        title: 'Wandmalerei',
+        title: 'Wandgemälde',
         description: 'Handgemalte Murals und künstlerische Wandgestaltungen.'
       },
       {
@@ -61,58 +64,104 @@ const servicesData = [
     id: 'lieblingsprodukte',
     icon: <ShoppingBag className="w-16 h-16" />,
     title: 'Lieblingsprodukte',
-    description: 'Handgefertigte Schätze für das Kinderzimmer.',
+    subtitle: 'Schätze für´s Kind und Kinderzimmer',
+    description: 'Entdecken Sie unsere liebevoll kuratierte Kollektion von Schätzen für Ihr Kind und das Kinderzimmer.',
     features: [
       {
-        title: 'Regionale Handarbeit',
-        description: 'Von lokalen Kunsthandwerkern liebevoll gefertigte Einzelstücke.'
+        title: 'Pikos Fusion stellt vor',
+        description: 'Babytiere-Mein erstes Mal-Rätsel und Wissensbuch'
       },
       {
-        title: 'Nachhaltige Materialien',
-        description: 'Umweltfreundliche und kindgerechte Materialien für gesundes Wohnen.'
+        title: 'Lieblingsprodukt diesen Quartals',
+        description: 'XXX'
       },
       {
-        title: 'Kreative Lösungen',
-        description: 'Innovative Aufbewahrungslösungen und Dekorationselemente.'
+        title: 'Handgemachtes',
+        description: 'Von Kunsthandwerkern liebevoll gefertigte Produkte'
       }
     ],
     images: [
-      'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1617104551322-7ee6f2b0b7b5?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1617104540035-9c61f1fa0978?auto=format&fit=crop&w=800&h=600&q=80'
+      'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&h=600&q=80',
+      'https://images.unsplash.com/photo-1555009393-f20bdb245c4d?auto=format&fit=crop&w=800&h=600&q=80',
+      'https://images.unsplash.com/photo-1513373319109-eb154073eb0b?auto=format&fit=crop&w=800&h=600&q=80'
     ]
   }
 ];
 
+const NavButton = memo(({ 
+  id, 
+  active, 
+  onClick, 
+  children 
+}: { 
+  id: string; 
+  active: boolean; 
+  onClick: (id: string) => void; 
+  children: React.ReactNode;
+}) => (
+  <button
+    onClick={() => onClick(id)}
+    className={`group relative px-6 py-3 transition-all duration-300 ${
+      active ? 'text-yellow-500' : 'text-gray-600 hover:text-yellow-500'
+    }`}
+  >
+    <span className="relative z-10">{children}</span>
+    {active && (
+      <span className="absolute inset-0 bg-yellow-50 rounded-full -z-1 animate-fade-in" />
+    )}
+    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+  </button>
+));
+
+NavButton.displayName = 'NavButton';
+
 const ServicesPage = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolling, setIsScrolling] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!isScrolling) {
-        const sections = servicesData.map(service => ({
-          id: service.id,
-          offset: document.getElementById(service.id)?.offsetTop || 0
-        }));
+    // Handle initial scroll to hash on page load
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const offset = element.offsetTop - 120;
+          window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+          });
+          setActiveSection(hash);
+        }
+      }, 100);
+    }
+  }, []);
 
-        const scrollPosition = window.scrollY + 200;
+  const handleScroll = useCallback(() => {
+    if (!isScrolling) {
+      const sections = servicesData.map(service => ({
+        id: service.id,
+        offset: document.getElementById(service.id)?.offsetTop || 0
+      }));
 
-        const currentSection = sections.reduce((acc, section) => {
-          return scrollPosition >= section.offset ? section.id : acc;
-        }, sections[0].id);
+      const scrollPosition = window.scrollY + 200;
 
-        setActiveSection(currentSection);
-      }
-    };
+      const currentSection = sections.reduce((acc, section) => {
+        return scrollPosition >= section.offset ? section.id : acc;
+      }, sections[0].id);
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+      setActiveSection(currentSection);
+    }
   }, [isScrolling]);
 
-  const scrollToSection = (id: string) => {
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  const scrollToSection = useCallback((id: string) => {
     setIsScrolling(true);
     const element = document.getElementById(id);
     if (element) {
@@ -124,34 +173,26 @@ const ServicesPage = () => {
       setActiveSection(id);
       setTimeout(() => setIsScrolling(false), 1000);
     }
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 pt-28">
-      {/* Navigation Pills */}
       <div className="bg-white shadow-lg sticky top-20 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="relative">
-            {/* Desktop Navigation */}
+        <PageContainer>
+          <div className="py-6">
             <div className="hidden md:flex flex-wrap justify-center gap-4 py-2">
               {servicesData.map((service) => (
-                <button
+                <NavButton
                   key={service.id}
-                  onClick={() => scrollToSection(service.id)}
-                  className={`group relative px-6 py-3 transition-all duration-300 ${
-                    activeSection === service.id ? 'text-yellow-500' : 'text-gray-600 hover:text-yellow-500'
-                  }`}
+                  id={service.id}
+                  active={activeSection === service.id}
+                  onClick={scrollToSection}
                 >
-                  <span className="relative z-10">{service.title}</span>
-                  {activeSection === service.id && (
-                    <span className="absolute inset-0 bg-yellow-50 rounded-full -z-1 animate-fade-in" />
-                  )}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-                </button>
+                  {service.title}
+                </NavButton>
               ))}
             </div>
-
-            {/* Mobile Navigation */}
+            
             <div className="md:hidden">
               <div className="flex flex-wrap gap-3 justify-center py-2">
                 {servicesData.map((service) => (
@@ -170,11 +211,10 @@ const ServicesPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </div>
 
-      {/* Services Sections */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <PageContainer className="py-12">
         {servicesData.map((service, index) => (
           <section
             key={service.id}
@@ -184,10 +224,12 @@ const ServicesPage = () => {
             <div className="flex flex-col items-center mb-12 text-center">
               <div className="text-yellow-500 mb-6">{service.icon}</div>
               <h2 className="text-4xl font-serif mb-4">{service.title}</h2>
-              <p className="text-xl text-gray-600 max-w-2xl">{service.description}</p>
+              {service.subtitle && (
+                <p className="text-xl text-gray-600 mb-2">{service.subtitle}</p>
+              )}
+              <p className="text-gray-600 max-w-2xl">{service.description}</p>
             </div>
 
-            {/* Features Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {service.features.map((feature, idx) => (
                 <div key={idx} className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -197,7 +239,6 @@ const ServicesPage = () => {
               ))}
             </div>
 
-            {/* Image Gallery - Desktop */}
             <div className="hidden md:grid grid-cols-3 gap-4">
               {service.images.map((image, idx) => (
                 <div key={idx} className="group relative overflow-hidden rounded-lg shadow-lg">
@@ -213,12 +254,12 @@ const ServicesPage = () => {
               ))}
             </div>
 
-            {/* Image Gallery - Mobile Slider */}
             <div className="md:hidden">
               <Swiper
                 modules={[Autoplay, Navigation, Pagination]}
                 spaceBetween={16}
                 slidesPerView={1}
+                navigation
                 pagination={{ clickable: true }}
                 autoplay={{
                   delay: 5000,
@@ -243,9 +284,9 @@ const ServicesPage = () => {
             </div>
           </section>
         ))}
-      </div>
+      </PageContainer>
     </div>
   );
 };
 
-export default ServicesPage;
+export default memo(ServicesPage);

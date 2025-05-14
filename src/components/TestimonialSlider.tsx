@@ -2,21 +2,10 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Quote, Heart } from 'lucide-react';
+import { TestimonialSliderProps } from '../types/testimonial';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-interface Testimonial {
-  name: string;
-  image: string;
-  rating: number;
-  date: string;
-  text: string;
-}
-
-interface TestimonialSliderProps {
-  testimonials: Testimonial[];
-}
 
 const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) => {
   return (

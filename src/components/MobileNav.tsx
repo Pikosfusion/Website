@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Mail, Phone, Home, Palette, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Home, Palette, ArrowRight } from 'lucide-react';
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
