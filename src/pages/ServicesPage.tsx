@@ -22,11 +22,11 @@ const servicesData = [
       },
       {
         title: 'Farbberatung',
-        description: 'Professionelle Farbkonzepte, die Harmonie und Wohlbefinden schaffen.'
+        description: 'Oberflächen, Materialien und Strukturen, die Harmonie und Wohlbefinden schaffen.'
       },
       {
         title: 'Möblierung',
-        description: 'Durchdachte Möblierungskonzepte für optimale Raumnutzung und maximalen Komfort.'
+        description: 'Durchdachte Ausbaupläne für optimale Raumnutzung und maximalen Komfort.'
       }
     ],
     images: [
@@ -47,11 +47,11 @@ const servicesData = [
       },
       {
         title: 'Tapeten Design',
-        description: 'Exklusive Tapetenlösungen und innovative Wandverkleidungen.'
+        description: 'XXL Tapetenlösungen und innovative Wandverkleidungen.'
       },
       {
         title: 'Akzente',
-        description: 'Kreative Akzente und Details, die Ihren Raum einzigartig machen.'
+        description: 'Gemälde auf Leinwand und andere Geschenkideen, die Persönlichkeit und das gewisse Extra mitbringen.'
       }
     ],
     images: [
@@ -64,20 +64,19 @@ const servicesData = [
     id: 'lieblingsprodukte',
     icon: <ShoppingBag className="w-16 h-16" />,
     title: 'Lieblingsprodukte',
-    subtitle: 'Schätze für´s Kind und Kinderzimmer',
-    description: 'Entdecken Sie unsere liebevoll kuratierte Kollektion von Schätzen für Ihr Kind und das Kinderzimmer.',
+    description: 'Entdecken Sie unsere liebevoll ausgewählten Schätze fürs Kind und Kinderzimmer.',
     features: [
       {
         title: 'Pikos Fusion stellt vor',
-        description: 'Babytiere-Mein erstes Mal-Rätsel und Wissensbuch'
+        description: 'Mein erstes Mal - Rätsel - und Wissensbuch'
       },
       {
-        title: 'Lieblingsprodukt diesen Quartals',
-        description: 'XXX'
+        title: 'Von und empfohlen',
+        description: 'Wenn schon, denn schon - schönes und nützliches.'
       },
       {
         title: 'Handgemachtes',
-        description: 'Von Kunsthandwerkern liebevoll gefertigte Produkte'
+        description: 'Von Kunsthandwerkern liebevoll gefertigte Schätze'
       }
     ],
     images: [
@@ -230,9 +229,9 @@ const ServicesPage = () => {
               <p className="text-gray-600 max-w-2xl">{service.description}</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               {service.features.map((feature, idx) => (
-                <div key={idx} className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div key={idx} className="bg-whites rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <h3 className="text-xl font-serif mb-3">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
                 </div>

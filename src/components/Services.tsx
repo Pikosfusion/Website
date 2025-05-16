@@ -40,7 +40,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-20">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -59,7 +59,7 @@ const Services = () => {
 
         {/* Features Section */}
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {features.map((feature, index) => (
               <div key={index} className="flex flex-col items-center text-center group">
                 <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-500 transition-colors duration-300">

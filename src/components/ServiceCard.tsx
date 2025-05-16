@@ -36,7 +36,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ id, icon, title, subtitle, de
         {/* Back of the card */}
         <div className="absolute inset-0 bg-yellow-500 p-8 rounded-lg shadow-lg flex flex-col items-center backface-hidden rotate-y-180">
           <div className="flex-grow">
-            <p className="text-white text-center leading-relaxed mb-6">
+            <p className="text-white text-center leading-relaxed mb-12">
               {description}
             </p>
             {features && (
