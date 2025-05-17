@@ -9,6 +9,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import interior_design_raumkonzepte from "../images/interior_design_raumkonzepte.jpg";
+import interior_design_farbberatung from "../images/interior_design_farbberatung.jpg";
+import interior_design_moebelierung from "../images/interior_design_moeblierung.jpg";
+
+import lieblingsprodukte_handgemachtes from "../images/lieblingsprodukte_handgemachtes.jpg";
+import lieblingsprodukte_pikos_fusion from "../images/lieblingsprodukte_pikos_fusion.jpg";
+import lieblingsprodukte_von_uns_empfohlen from "../images/lieblingsprodukte_von_uns_empfohlen.jpg";
+
+import wand_kunst_akzente from "../images/wand_kunst_akzente.jpg";
+import wand_kunst_tapeten_design from "../images/wand_kunst_tapeten_design.jpg";
+import wand_kunst_wandgemaelde from "../images/wand_kunst_wandgemaelde.jpg";
+
 const servicesData = [
   {
     id: 'interior-design',
@@ -30,9 +42,9 @@ const servicesData = [
       }
     ],
     images: [
-      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1617104551722-3b2d51366400?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&h=600&q=80'
+      interior_design_raumkonzepte,
+      interior_design_farbberatung,
+      interior_design_moebelierung
     ]
   },
   {
@@ -55,9 +67,9 @@ const servicesData = [
       }
     ],
     images: [
-      'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1615529162924-f8605388461d?auto=format&fit=crop&w=800&h=600&q=80'
+      wand_kunst_wandgemaelde,
+      wand_kunst_tapeten_design,
+      wand_kunst_akzente
     ]
   },
   {
@@ -71,7 +83,7 @@ const servicesData = [
         description: 'Mein erstes Mal - Rätsel - und Wissensbuch'
       },
       {
-        title: 'Von und empfohlen',
+        title: 'Von uns empfohlen',
         description: 'Wenn schon, denn schon - schönes und nützliches.'
       },
       {
@@ -80,9 +92,9 @@ const servicesData = [
       }
     ],
     images: [
-      'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1555009393-f20bdb245c4d?auto=format&fit=crop&w=800&h=600&q=80',
-      'https://images.unsplash.com/photo-1513373319109-eb154073eb0b?auto=format&fit=crop&w=800&h=600&q=80'
+      lieblingsprodukte_pikos_fusion,
+      lieblingsprodukte_von_uns_empfohlen,
+      lieblingsprodukte_handgemachtes
     ]
   }
 ];

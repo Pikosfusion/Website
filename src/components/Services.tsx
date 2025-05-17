@@ -6,6 +6,8 @@ import ContactForm from './ContactForm';
 import { services } from '../data/services';
 import { testimonials } from '../data/testimonials';
 
+import portrait from '../images/portrait.jpg';
+
 const features = [
   {
     title: "Entwicklungsfördernd",
@@ -95,8 +97,9 @@ const Services = () => {
             {/* Portrait Side */}
             <div className="relative h-64 md:h-auto order-1 md:order-2">
               <img
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
-                alt="Portrait"
+               // src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
+                src={portrait}
+                  alt="Portrait"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 md:p-8">
