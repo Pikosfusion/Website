@@ -5,6 +5,12 @@ export interface ServiceFeature {
   description: string;
 }
 
+export interface ServiceImage {
+  url: string;
+  link?: string;
+  text?: string;
+}
+
 export interface Service {
   id: string;
   icon: LucideIcon;
@@ -12,6 +18,7 @@ export interface Service {
   subtitle?: string;
   description: string;
   features?: ServiceFeature[];
+  images: ServiceImage[];
 }
 
 export interface ServiceCardProps {

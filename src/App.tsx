@@ -23,7 +23,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-      <Router basename="/apps/sandra">
+      <Router basename="">
         <ScrollToTop />
         <MainLayout>
           <Suspense fallback={<LoadingSpinner />}>
