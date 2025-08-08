@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Anchor, Heart } from 'lucide-react';
+import { Star, Anchor, Heart, ArrowRight } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import TestimonialSlider from './TestimonialSlider';
 import ContactForm from './ContactForm';
@@ -115,6 +115,151 @@ const Services = () => {
 
           {/* Testimonials Section */}
           <TestimonialSlider testimonials={testimonials} />
+
+          {/* FFT Partner Section */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mt-20">
+            <div className="flex flex-col md:grid md:grid-cols-2">
+              {/* Content Side */}
+              <div className="p-8 lg:p-12 flex flex-col order-2 md:order-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <span className="text-blue-600 font-medium tracking-wide text-sm">OFFIZIELLER PARTNER</span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-serif mb-6 leading-tight">
+                  FFT – Großformatige Wandkunst, professionell umgesetzt
+                </h3>
+
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p>
+                    FFT – Funktionsflächentextil steht für hochwertige, nahtlose Oberflächenbeläge im XXL-Format. Entwickelt und produziert in Deutschland, kombiniert das System gestalterische Freiheit mit technischer Präzision – ideal für anspruchsvolle Innenraumlösungen.
+                  </p>
+
+                  <p>
+                    Dank unserer Partnerschaft mit FFT können wir individuelle Wandkunst in beeindruckender Größe realisieren: druckbar bis 5 Meter Breite, frei wählbar in Motiv, Farbe und Form – ganz ohne sichtbare Nähte. Dabei entstehen Lösungen, die nicht nur ästhetisch überzeugen, sondern auch langlebig und dimensionsstabil sind.
+                  </p>
+
+                  <p>
+                    Als Gestaltungspartner übernehmen wir die kreative Konzeption und auf Wunsch auch die Projektbetreuung – mit dem Anspruch, Räume in einzigartige Bildwelten zu verwandeln. Unsere Kund*innen profitieren von maßgeschneiderten Motiven, fachgerechter Umsetzung und der gebündelten Kompetenz aus Design und Technik.
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Made in Germany
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    XXL-Format bis 5m
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Nahtlose Verarbeitung
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Dimensionsstabil
+                  </span>
+                </div>
+
+                <a
+                    href="https://www.fftextil.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors duration-300 mt-8 inline-flex items-center gap-2 w-fit group"
+                >
+                  <span>Mehr über FFT erfahren</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              </div>
+
+              {/* Image Side */}
+              <div className="relative h-100 md:h-auto order-1 md:order-2">
+                {/* Mobile Image */}
+                <img
+                    src="https://www.pikosfusion.de/images/fft_banner.jpg"
+                    alt="FFT Partner - Großformatige Wandkunst Mobile"
+                    className="w-full h-full object-cover object-top md:hidden"
+                />
+                {/* Tablet Image */}
+                <img
+                    src="https://www.pikosfusion.de/images/fft_banner.jpg"
+                    alt="FFT Partner - Großformatige Wandkunst Tablet"
+                    className="w-full h-full object-cover hidden md:block lg:hidden"
+                />
+                {/* Desktop Image */}
+                <img
+                    src="https://www.pikosfusion.de/images/fft_banner.jpg"
+                    alt="FFT Partner - Großformatige Wandkunst Desktop"
+                    className="w-full h-full object-cover hidden lg:block"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-blue-600/20 to-transparent"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mynt Partner Section */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mt-20">
+            <div className="flex flex-col md:grid md:grid-cols-2">
+              {/* Image Side */}
+              <div className="relative h-100 md:h-auto order-1 md:order-1">
+                <img
+                    src="https://www.pikosfusion.de/images/mynt_partner.jpg"
+                    alt="Mynt Partner - Nachhaltige Farbprodukte"
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-transparent"></div>
+              </div>
+
+              {/* Content Side */}
+              <div className="p-8 lg:p-12 flex flex-col justify-center order-2 md:order-2">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="text-green-600 font-medium tracking-wide text-sm">OFFIZIELLER PARTNER</span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-serif mb-6 leading-tight">
+                  Wie wir mit Mynt nachhaltige und wohngesunde Farbwelten mit ökologischen Wandfarben schaffen
+                </h3>
+
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p>
+                    Wir sind stolz darauf, ein offizieller Partner von Mynt zu sein, einem Vorreiter im Bereich nachhaltiger und wohngesunder Farbprodukte, die ohne den Einsatz von Erdöl hergestellt werden. Wandfarben sind ein allgegenwärtiges Element in jedem Raum, doch was viele nicht wissen: Konventionelle Wandfarben basieren auf Erdöl und tragen laut einer Studie aus der Schweiz mit 58 Prozent zu den Mikroplastikbelastungen in unseren Ozeanen bei.
+                  </p>
+
+                  <p>
+                    Im Gegensatz dazu setzt Mynt auf eine Revolution in der Farbbranche durch die Verwendung von biologischen Bindemitteln und Naturpigmenten. Diese nachhaltige Herangehensweise garantiert nicht nur eine verbesserte Raumluftqualität und langlebige Farbbrillanz, sondern vermeidet auch Erdöl, Mikroplastik und unangenehme Gerüche.
+                  </p>
+
+                  <p>
+                    Als offizieller Mynt-Partner haben wir Zugang zu dieser exklusiven Auswahl an ökologischen, erdölfreien und hochwertigen Farbprodukten. Wir freuen uns darauf, Sie zu den umweltfreundlichen Farboptionen von Mynt zu beraten und diese in unseren Projekten zu implementieren.
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Erdölfrei
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Mikroplastikfrei
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Klimaneutral
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Made in Germany
+                  </span>
+                </div>
+
+                <a
+                    href="https://mynthome.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors duration-300 mt-8 inline-flex items-center gap-2 w-fit group"
+                >
+                  <span>Mehr über Mynt erfahren</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
   );
